@@ -1,11 +1,23 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, StatusBar, } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  StatusBar,
+  ScrollView,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 export default function Login({ navigation }) {
   return (
-    <LinearGradient colors={['#5700D8', '#6100BF', '#8300C0']} style={styles.container}>
+    <LinearGradient
+      colors={['#5700D8', '#6100BF', '#8300C0']}
+      style={styles.container}
+    >
       <StatusBar backgroundColor="#5700D8" />
+      {/* <ScrollView showsVerticalScrollIndicator={false}> */}
       <Text style={styles.textTitle}>College Tax</Text>
 
       <View style={styles.loginView}>
@@ -26,14 +38,17 @@ export default function Login({ navigation }) {
           secureTextEntry
           placeholderTextColor="#eee"
         />
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('Register')}
+        >
+          <Text style={styles.btnText} >Entrar</Text>
+        </TouchableOpacity>
+
       </View>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('List')}
-      >
-        <Text style={styles.btnText} >Entrar</Text>
-      </TouchableOpacity>
+    {/* </ScrollView> */}
     </LinearGradient>
   );
 }
@@ -72,7 +87,7 @@ const styles = StyleSheet.create({
   button: {
     height: 50,
     width: '80%',
-    bottom: '20%',
+    marginTop: 10,
     borderRadius: 8,
     alignSelf: 'center',
     alignItems: 'center',
