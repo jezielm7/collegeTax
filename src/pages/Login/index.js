@@ -6,7 +6,6 @@ import {
   TextInput,
   TouchableOpacity,
   StatusBar,
-  ScrollView,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -17,7 +16,7 @@ export default function Login({ navigation }) {
       style={styles.container}
     >
       <StatusBar backgroundColor="#5700D8" />
-      {/* <ScrollView showsVerticalScrollIndicator={false}> */}
+
       <Text style={styles.textTitle}>College Tax</Text>
 
       <View style={styles.loginView}>
@@ -48,7 +47,6 @@ export default function Login({ navigation }) {
 
       </View>
 
-    {/* </ScrollView> */}
     </LinearGradient>
   );
 }
@@ -87,7 +85,7 @@ const styles = StyleSheet.create({
   button: {
     height: 50,
     width: '80%',
-    marginTop: 10,
+    marginTop: 8,
     borderRadius: 8,
     alignSelf: 'center',
     alignItems: 'center',
