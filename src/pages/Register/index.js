@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   StatusBar,
   ScrollView,
+  Alert,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -18,64 +19,64 @@ export default function Register({ navigation }) {
     >
       <StatusBar backgroundColor="#221f32" />
 
-       <ScrollView showsVerticalScrollIndicator={false}>
-      <Text style={styles.textTitle}>Cadastro</Text>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Text style={styles.textTitle}>Cadastro</Text>
 
-      <View style={styles.loginView}>
+        <View style={styles.loginView}>
 
-        <TextInput
-          style={styles.input}
-          placeholder="Nome Completo"
-          autoCorrect={false}
-          placeholderTextColor="#eee"
-        />
+          <TextInput
+            style={styles.input}
+            placeholder="Nome Completo"
+            autoCorrect={false}
+            placeholderTextColor="#eee"
+          />
 
-        <TextInput
-          style={styles.input}
-          placeholder="Data de Nascimento"
-          keyboardType="number-pad"
-          secureTextEntry
-          placeholderTextColor="#eee"
-        />
+          <TextInput
+            style={styles.input}
+            placeholder="Data de Nascimento"
+            keyboardType="number-pad"
+            secureTextEntry
+            placeholderTextColor="#eee"
+          />
 
-        <TextInput
-          style={styles.input}
-          placeholder="Nome do Responsável"
-          autoCorrect={false}
-          placeholderTextColor="#eee"
-        />
+          <TextInput
+            style={styles.input}
+            placeholder="Nome do Responsável"
+            autoCorrect={false}
+            placeholderTextColor="#eee"
+          />
 
-        <TextInput
-          style={styles.input}
-          placeholder="CPF do Responsável"
-          keyboardType="number-pad"
-          placeholderTextColor="#eee"
-        />
+          <TextInput
+            style={styles.input}
+            placeholder="CPF do Responsável"
+            keyboardType="number-pad"
+            placeholderTextColor="#eee"
+          />
 
-        <Text style={styles.titleForm}>Dados Universitários</Text>
+          <Text style={styles.titleForm}>Dados Universitários</Text>
 
-        <TextInput
-          style={styles.input}
-          placeholder="Matrícula"
-          keyboardType="number-pad"
-          placeholderTextColor="#eee"
-        />
+          <TextInput
+            style={styles.input}
+            placeholder="Matrícula"
+            keyboardType="number-pad"
+            placeholderTextColor="#eee"
+          />
 
-        <TextInput
-          style={styles.input}
-          placeholder="Curso"
-          autoCorrect={false}
-          placeholderTextColor="#eee"
-        />
+          <TextInput
+            style={styles.input}
+            placeholder="Curso"
+            autoCorrect={false}
+            placeholderTextColor="#eee"
+          />
 
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('List')}
-        >
-          <Text style={styles.btnText}>Cadastrar</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate('List')}
+          >
+            <Text style={styles.btnText}>Cadastrar</Text>
+          </TouchableOpacity>
 
-      </View>
+        </View>
 
       </ScrollView>
     </LinearGradient>
