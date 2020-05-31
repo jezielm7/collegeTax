@@ -1,16 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  TextInput,
   TouchableOpacity,
   StatusBar,
-  ScrollView,
+  FlatList,
 } from 'react-native';
+
 import LinearGradient from 'react-native-linear-gradient';
 
-export default function Billet({ navigation }) {
+import StudentsData from '../../components';
+
+export default function List({ navigation }) {
+
+  const [list, setList] = useState(StudentsData);
+
+  const _renderItem = ({ item }) => {
+    return (
+      <View style={styles.item}>
+        <Text style={styles.itemName}>{item.name}</Text>
+
+        <View style={styles.medLine}>
+          <Text style={styles.textItemPdf}>Matrícula: {item.registration}</Text>
+
+          <TouchableOpacity style={styles.pdfButton}>
+
+            <Text style={{
+              fontSize: 17,
+              color: '#fff',
+              textAlign: 'center',
+            }}>PDF</Text>
+
+          </TouchableOpacity>
+        </View>
+
+        <Text style={styles.itemCourse}>{item.course}</Text>
+      </View>
+    );
+  };
+
   return (
     <LinearGradient
       colors={['#322775', '#304586', '#304D89']}
@@ -22,116 +51,21 @@ export default function Billet({ navigation }) {
         <Text style={styles.textTitle}>Alunos Cadastrados</Text>
       </View>
 
-      <View style={styles.listView}>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <View style={styles.item}>
-            <Text style={styles.itemName}>Jeziel Marques Braga</Text>
+        <View style={styles.listView}>
 
-            <View style={styles.medLine}>
-              <Text style={styles.textItemPdf}>Matrícula: 164762</Text>
-
-              <TouchableOpacity style={styles.pdfButton}>
-
-                <Text style={{
-                  fontSize: 17,
-                  color: '#fff',
-                  textAlign: 'center',
-                }}>PDF</Text>
-
-              </TouchableOpacity>
-            </View>
-
-            <Text style={styles.itemCourse}>Ciência da Computação</Text>
-          </View>
-
-          <View style={styles.item}>
-            <Text style={styles.itemName}>Jeziel Marques Braga</Text>
-
-            <View style={styles.medLine}>
-              <Text style={styles.textItemPdf}>Matrícula: 164762</Text>
-
-              <TouchableOpacity style={styles.pdfButton}>
-
-                <Text style={{
-                  fontSize: 17,
-                  color: '#fff',
-                  textAlign: 'center',
-                }}>PDF</Text>
-
-              </TouchableOpacity>
-            </View>
-
-            <Text style={styles.itemCourse}>Ciência da Computação</Text>
-          </View>
-
-          <View style={styles.item}>
-            <Text style={styles.itemName}>Jeziel Marques Braga</Text>
-
-            <View style={styles.medLine}>
-              <Text style={styles.textItemPdf}>Matrícula: 164762</Text>
-
-              <TouchableOpacity style={styles.pdfButton}>
-
-                <Text style={{
-                  fontSize: 17,
-                  color: '#fff',
-                  textAlign: 'center',
-                }}>PDF</Text>
-
-              </TouchableOpacity>
-            </View>
-
-            <Text style={styles.itemCourse}>Ciência da Computação</Text>
-          </View>
-
-          <View style={styles.item}>
-            <Text style={styles.itemName}>Jeziel Marques Braga</Text>
-
-            <View style={styles.medLine}>
-              <Text style={styles.textItemPdf}>Matrícula: 164762</Text>
-
-              <TouchableOpacity style={styles.pdfButton}>
-
-                <Text style={{
-                  fontSize: 17,
-                  color: '#fff',
-                  textAlign: 'center',
-                }}>PDF</Text>
-
-              </TouchableOpacity>
-            </View>
-
-            <Text style={styles.itemCourse}>Ciência da Computação</Text>
-          </View>
-
-          <View style={styles.item}>
-            <Text style={styles.itemName}>Jeziel Marques Braga</Text>
-
-            <View style={styles.medLine}>
-              <Text style={styles.textItemPdf}>Matrícula: 164762</Text>
-
-              <TouchableOpacity style={styles.pdfButton}>
-
-                <Text style={{
-                  fontSize: 17,
-                  color: '#fff',
-                  textAlign: 'center',
-                }}>PDF</Text>
-
-              </TouchableOpacity>
-            </View>
-
-            <Text style={styles.itemCourse}>Ciência da Computação</Text>
-          </View>
+          <FlatList
+            data={list}
+            renderItem={_renderItem}
+            key={list.map(list => list.id)}
+          />
 
           <TouchableOpacity
             style={styles.button}
             onPress={() => navigation.navigate('Register')}
           >
-            <Text style={styles.btnText}>Cadastrar</Text>
+            <Text style={styles.btnText}>Novo Cadastro</Text>
 
           </TouchableOpacity>
-        </ScrollView>
       </View>
 
     </LinearGradient>
@@ -203,7 +137,7 @@ const styles = StyleSheet.create({
     opacity: 0.8,
   },
   btnText: {
-    fontSize: 18,
+    fontSize: 20,
     color: '#fff',
   },
 });
