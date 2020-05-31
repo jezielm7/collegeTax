@@ -31,10 +31,4 @@ export default [
     registration: 534780,
     course: "Redes de Computadores",
   },
-  {
-    id: 5,
-    name: "Luan Marques",
-    registration: 534780,
-    course: "Redes de Computadores",
-  },
 ];

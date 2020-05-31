@@ -14,7 +14,7 @@ export default function Routes() {
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="List" component={List} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-        <Stack.Screen name="Register" component={Register}  options={{ headerShown: false }} />
+        <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
