@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   StatusBar,
   FlatList,
+  ScrollView,
 } from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
@@ -15,6 +16,7 @@ import StudentsData from '../../components';
 export default function List({ navigation }) {
 
   const [list, setList] = useState(StudentsData);
+  const [loading, setLoading] = useState(false);
 
   const _renderItem = ({ item }) => {
     return (
@@ -51,6 +53,7 @@ export default function List({ navigation }) {
         <Text style={styles.textTitle}>Alunos Cadastrados</Text>
       </View>
 
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.listView}>
 
           <FlatList
@@ -66,7 +69,8 @@ export default function List({ navigation }) {
             <Text style={styles.btnText}>Novo Cadastro</Text>
 
           </TouchableOpacity>
-      </View>
+        </View>
+      </ScrollView>
 
     </LinearGradient>
   );
@@ -129,7 +133,7 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: 8,
     borderRadius: 8,
-    marginBottom: '25%',
+    marginBottom: '8%',
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
