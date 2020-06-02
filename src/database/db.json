@@ -1,25 +1,11 @@
 {
-  "users": [
-    {
-      "id": 1,
-      "email": "master@email.com",
-      "password": 123456
-    }
-  ],
   "students": [
     {
       "id": 1,
-      "name": "Jeziel Marques",
+      "name": "Luis henrique",
       "registration": 164762,
-      "course": "Ciência da Computação"
+      "course": "Desenvolvimento de Software"
     },
-    [
-      {
-        "name": "Luan Marques",
-        "registration": 123682,
-        "course": "Economia"
-      }
-    ],
     [
       {
         "id": 2,

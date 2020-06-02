@@ -11,14 +11,19 @@ import {
 
 import LinearGradient from 'react-native-linear-gradient';
 
-import StudentsData from '../../components';
+import api from '../../database/db.json';
 
 export default function List({ navigation }) {
 
-  const [list, setList] = useState(StudentsData);
-  const [loading, setLoading] = useState(false);
+  const [students, setStudents] = useState([]);
 
   const _renderItem = ({ item }) => {
+
+    fetch(api, {
+      method: 'get'
+    })
+      .then()
+
     return (
       <View style={styles.item}>
         <Text style={styles.itemName}>{item.name}</Text>
