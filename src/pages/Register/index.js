@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -7,11 +7,18 @@ import {
   TouchableOpacity,
   StatusBar,
   ScrollView,
-  Alert,
 } from 'react-native';
+
 import LinearGradient from 'react-native-linear-gradient';
+import { TextInputMask } from 'react-native-masked-text';
 
 export default function Register({ navigation }) {
+
+  const [students, setStudents] = useState([]);
+
+  const [birthday, setBirthday] = useState();
+  const [cpf, setCpf] = useState();
+
   return (
     <LinearGradient
       colors={['#221f32', '#493a99', '#382699']}
@@ -31,11 +38,18 @@ export default function Register({ navigation }) {
             placeholderTextColor="#eee"
           />
 
-          <TextInput
+          <TextInputMask
+            type={'datetime'}
+            options={{
+              mask: 'DD/MM/YYYY'
+            }}
+            value={birthday}
+            onChangeText={text => {
+              setBirthday(text)
+            }}
             style={styles.input}
             placeholder="Data de Nascimento"
             keyboardType="number-pad"
-            secureTextEntry
             placeholderTextColor="#eee"
           />
 
@@ -46,7 +60,13 @@ export default function Register({ navigation }) {
             placeholderTextColor="#eee"
           />
 
-          <TextInput
+          <TextInputMask
+          type={'cpf'}
+          
+          value={cpf}
+          onChangeText={text => {
+            setCpf(text)
+          }}
             style={styles.input}
             placeholder="CPF do Responsável"
             keyboardType="number-pad"
@@ -88,14 +108,14 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   textTitle: {
-    top: '5%',
     fontSize: 32,
     color: '#fff',
+    marginTop: '5%',
     textAlign: 'center',
   },
   loginView: {
     flex: 1,
-    top: '8%',
+    top: '5%',
   },
   loginTxt: {
     fontSize: 30,
@@ -104,7 +124,7 @@ const styles = StyleSheet.create({
     marginBottom: '15%',
   },
   input: {
-    padding: 10,
+    padding: 12,
     width: '80%',
     fontSize: 16,
     color: '#fff',
@@ -118,7 +138,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     color: '#fff',
     marginTop: 15,
-    marginBottom: 15,
+    marginBottom: 20,
     textAlign: 'center',
   },
   button: {

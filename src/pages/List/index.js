@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -9,27 +9,28 @@ import {
   ScrollView,
 } from 'react-native';
 
-import LinearGradient from 'react-native-linear-gradient';
+import api from '../../services/api';
 
-import api from '../../database/db.json';
+import LinearGradient from 'react-native-linear-gradient';
 
 export default function List({ navigation }) {
 
   const [students, setStudents] = useState([]);
 
-  const _renderItem = ({ item }) => {
+  useEffect(() => {
+    api.get('students').then(res => {
+      setStudents(res.data);
+    });
+  }, []);
 
-    fetch(api, {
-      method: 'get'
-    })
-      .then()
-
-    return (
+  const _renderItem = () => {
+    {return (
+      students.map(student => (
       <View style={styles.item}>
-        <Text style={styles.itemName}>{item.name}</Text>
+        <Text style={styles.itemName} key={student.id} >{student.name}</Text>
 
         <View style={styles.medLine}>
-          <Text style={styles.textItemPdf}>Matrícula: {item.registration}</Text>
+          <Text style={styles.textItemPdf}>Matrícula: {student.registration}</Text>
 
           <TouchableOpacity style={styles.pdfButton}>
 
@@ -42,10 +43,10 @@ export default function List({ navigation }) {
           </TouchableOpacity>
         </View>
 
-        <Text style={styles.itemCourse}>{item.course}</Text>
+        <Text style={styles.itemCourse}>{student.course}</Text>
       </View>
-    );
-  };
+    )));
+  }};
 
   return (
     <LinearGradient
@@ -58,24 +59,22 @@ export default function List({ navigation }) {
         <Text style={styles.textTitle}>Alunos Cadastrados</Text>
       </View>
 
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.listView}>
+      <View style={styles.listView}>
 
-          <FlatList
-            data={list}
-            renderItem={_renderItem}
-            key={list.map(list => list.id)}
-          />
+        <FlatList
+          data={students}
+          renderItem={_renderItem}
+          keyExtractor={student => student.id}
+        />
 
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate('Register')}
-          >
-            <Text style={styles.btnText}>Novo Cadastro</Text>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('Register')}
+        >
+          <Text style={styles.btnText}>Novo Cadastro</Text>
 
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
+        </TouchableOpacity>
+      </View>
 
     </LinearGradient>
   );
@@ -86,7 +85,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   title: {
-    marginTop: '6%',
+    marginTop: '10%',
     alignSelf: 'center',
   },
   textTitle: {
@@ -96,7 +95,7 @@ const styles = StyleSheet.create({
   },
   listView: {
     width: '80%',
-    marginTop: 12,
+    marginTop: '10%',
     alignSelf: 'center',
   },
   item: {
@@ -127,7 +126,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   pdfButton: {
-    top: 10,
+    top: 5,
     right: 15,
     width: '20%',
     borderRadius: 4,
@@ -135,8 +134,8 @@ const styles = StyleSheet.create({
   },
   button: {
     height: 50,
+    marginTop: 6,
     width: '100%',
-    marginTop: 8,
     borderRadius: 8,
     marginBottom: '8%',
     alignSelf: 'center',
